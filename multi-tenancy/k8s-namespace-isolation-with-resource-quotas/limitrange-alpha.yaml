@@ -1,0 +1,21 @@
+# create a file limitrange-alpha.yaml
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: team-alpha-limits
+  namespace: team-alpha
+spec:
+  limits:
+  - type: Container
+    default:          # applied when a container omits limits:
+      cpu: "500m"
+      memory: "256Mi"
+    defaultRequest:   # applied when a container omits requests:
+      cpu: "100m"
+      memory: "128Mi"
+    max:              # hard ceiling per container
+      cpu: "2"
+      memory: "2Gi"
+    min:
+      cpu: "50m"
+      memory: "64Mi"
